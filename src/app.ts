@@ -1,16 +1,12 @@
 import express, { type Express} from "express";
-import type { Response, Request }  from "express";
+import cors from "cors"
+import routes from "./routes/index.js";
 
 const app: Express = express();
 
+app.use(cors());
 app.use(express.json());
 
-app.get("/", (_req: Request, res: Response,) => {
-    
-    res.json({
-        sucesso: true,
-        mensagem: "Api funcionando!"
-    })
-})
+app.use("/api", routes);
 
 export default app;
