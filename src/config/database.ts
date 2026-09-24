@@ -2,7 +2,7 @@ import { Sequelize } from "sequelize";
 import { env } from "./env.js";
 
 export const database = new Sequelize(
-    env.database.name, 
+    env.database.name,
     env.database.user,
     env.database.password,
     {
@@ -19,13 +19,13 @@ export const database = new Sequelize(
     }
 );
 
-export async function connectDb(): Promise<void>{
+export async function connectDb(): Promise<void> {
     try {
         await database.authenticate();
         console.log("Banco de dados conectado!");
-    } catch(error) {
-        console.error("Erro ao conectar ao banco de dados.");
-        process.exit();
+    } catch (error) {
+        console.error("Erro ao conectar ao banco de dados:", error);
+        process.exit(1);
     }
 };
 
