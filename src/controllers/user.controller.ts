@@ -20,7 +20,7 @@ class UserController {
             const { username, email, password }: ICreateUser = req.body;
             
             if (!username || !email || !password) {
-                res.status(StatusCodes.BAD_REQUEST).json({
+                return res.status(StatusCodes.BAD_REQUEST).json({
                         error: true,
                         message: "Usuário, e-mail e senha são obrigatórios"
                     }
